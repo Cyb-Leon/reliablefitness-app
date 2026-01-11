@@ -121,7 +121,7 @@ export function AboutSection() {
               className="text-4xl md:text-5xl font-bold text-primary transition-transform duration-300 group-hover:scale-110"
               style={{ fontFamily: "var(--font-bebas)" }}
             >
-              500+
+              50+
             </div>
             <div className="text-muted-foreground font-medium">Active Groups</div>
           </div>
@@ -130,7 +130,7 @@ export function AboutSection() {
               className="text-4xl md:text-5xl font-bold text-primary transition-transform duration-300 group-hover:scale-110"
               style={{ fontFamily: "var(--font-bebas)" }}
             >
-              50K+
+              5K+
             </div>
             <div className="text-muted-foreground font-medium">Participants</div>
           </div>
@@ -139,7 +139,7 @@ export function AboutSection() {
               className="text-4xl md:text-5xl font-bold text-primary transition-transform duration-300 group-hover:scale-110"
               style={{ fontFamily: "var(--font-bebas)" }}
             >
-              100+
+              10+
             </div>
             <div className="text-muted-foreground font-medium">Corporate Partners</div>
           </div>
@@ -148,7 +148,7 @@ export function AboutSection() {
               className="text-4xl md:text-5xl font-bold text-primary transition-transform duration-300 group-hover:scale-110"
               style={{ fontFamily: "var(--font-bebas)" }}
             >
-              25+
+              5+
             </div>
             <div className="text-muted-foreground font-medium">Cities</div>
           </div>

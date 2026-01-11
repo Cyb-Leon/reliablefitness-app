@@ -6,32 +6,32 @@ import { ArrowRight, Users, Zap, ChevronLeft, ChevronRight } from "lucide-react"
 
 const slides = [
   {
-    image: "/diverse-group-of-people-doing-intense-group-fitnes.jpg",
+    image: "/grp1.jpg",
     title: "Group Fitness. Anywhere. Everywhere.",
     subtitle: "Structured group workouts for communities, companies, and teams",
   },
   {
-    image: "/people-doing-pushups-group-fitness-training-animat.jpg",
+    image: "/bg1.jpg",
     title: "Build Strength Together",
     subtitle: "Bodyweight training that pushes your limits as a team",
   },
   {
-    image: "/group-of-people-running-together-outdoor-fitness-t.jpg",
+    image: "/grp2.jpg",
     title: "Run With Your Crew",
     subtitle: "Outdoor fitness programs that bring people together",
   },
   {
-    image: "/group-kickboxing-fitness-class-people-training-tog.jpg",
+    image: "/bg2.jpg",
     title: "High-Energy Boxing",
     subtitle: "Cardio kickboxing classes that pack a punch",
   },
   {
-    image: "/group-yoga-fitness-class-people-stretching-togethe.jpg",
+    image: "/grp3.jpg",
     title: "Mind & Body Wellness",
     subtitle: "Yoga and stretching for balanced team fitness",
   },
   {
-    image: "/hiit-high-intensity-interval-training-group-workou.jpg",
+    image: "/grp4.jpg",
     title: "HIIT The Next Level",
     subtitle: "High-intensity intervals that deliver maximum results",
   },

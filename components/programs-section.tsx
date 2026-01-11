@@ -12,6 +12,7 @@ const programs = [
     description: "High-energy workouts in parks, beaches, and open spaces with diverse communities.",
     features: ["15-30 participants", "Weather-adaptive", "Natural settings"],
     color: "bg-primary",
+    image: "/grp1.jpg",
   },
   {
     icon: Building2,
@@ -19,6 +20,7 @@ const programs = [
     description: "On-site or nearby group fitness programs designed specifically for employee wellness.",
     features: ["Flexible scheduling", "Office locations", "Team building"],
     color: "bg-secondary",
+    image: "/grp2.jpg",
   },
   {
     icon: Users2,
@@ -26,6 +28,7 @@ const programs = [
     description: "Energizing group bootcamps that bring neighborhoods and communities together.",
     features: ["All fitness levels", "Social connections", "Regular schedules"],
     color: "bg-primary",
+    image: "/grp3.jpg",
   },
   {
     icon: Monitor,
@@ -33,6 +36,7 @@ const programs = [
     description: "Remote group workouts that maintain the energy and accountability of in-person sessions.",
     features: ["Live interaction", "Global access", "Recording available"],
     color: "bg-secondary",
+    image: "/grp4.jpg",
   },
 ]
 
@@ -90,7 +94,15 @@ export function ProgramsSection() {
                 className="animate-on-scroll group relative overflow-hidden border-2 hover:border-primary transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
                 style={{ animationDelay: `${0.3 + index * 0.1}s` }}
               >
-                <div className="p-8 space-y-6">
+                {/* Background Image */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                  style={{ backgroundImage: `url(${program.image})` }}
+                />
+                {/* Overlay for readability */}
+                <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-background/80 group-hover:from-background/90 group-hover:via-background/85 group-hover:to-background/75 transition-all duration-500" />
+                
+                <div className="relative p-8 space-y-6">
                   {/* Icon and Title */}
                   <div className="flex items-start gap-4">
                     <div
@@ -109,7 +121,7 @@ export function ProgramsSection() {
                     {program.features.map((feature) => (
                       <div
                         key={feature}
-                        className="flex items-center gap-2 px-3 py-1.5 bg-muted rounded-full text-sm text-foreground"
+                        className="flex items-center gap-2 px-3 py-1.5 bg-muted/80 backdrop-blur-sm rounded-full text-sm text-foreground"
                       >
                         <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                         {feature}
