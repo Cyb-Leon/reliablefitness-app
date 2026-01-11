@@ -187,19 +187,19 @@ export function HeroSection() {
           >
             <div className="space-y-2">
               <div className="text-4xl md:text-5xl font-bold text-primary" style={{ fontFamily: "var(--font-bebas)" }}>
-                500+
+                10+
               </div>
               <div className="text-background/80 font-medium">Active Groups</div>
             </div>
             <div className="space-y-2">
               <div className="text-4xl md:text-5xl font-bold text-primary" style={{ fontFamily: "var(--font-bebas)" }}>
-                50K+
+                5K+
               </div>
               <div className="text-background/80 font-medium">Participants</div>
             </div>
             <div className="space-y-2">
               <div className="text-4xl md:text-5xl font-bold text-primary" style={{ fontFamily: "var(--font-bebas)" }}>
-                100+
+                10+
               </div>
               <div className="text-background/80 font-medium">Corporate Partners</div>
             </div>
@@ -222,12 +222,6 @@ export function HeroSection() {
         ))}
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-20">
-        <div className="w-6 h-10 border-2 border-background/50 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-3 bg-primary rounded-full animate-pulse" />
-        </div>
-      </div>
     </section>
   )
 }

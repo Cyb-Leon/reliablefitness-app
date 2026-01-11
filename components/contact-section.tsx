@@ -87,7 +87,7 @@ export function ContactSection() {
                 </Label>
                 <Input
                   id="name"
-                  placeholder={formType === "corporate" ? "Acme Corporation" : "John Smith"}
+                  placeholder={formType === "corporate" ? "Acme Corporation" : "Thandi Nkosi"}
                   className="transition-all duration-300 focus:scale-[1.02]"
                 />
               </div>
@@ -111,7 +111,7 @@ export function ContactSection() {
                 <Input
                   id="phone"
                   type="tel"
-                  placeholder="+1 (555) 000-0000"
+                  placeholder="+27 (555) 000-0000"
                   className="transition-all duration-300 focus:scale-[1.02]"
                 />
               </div>
@@ -169,7 +169,7 @@ export function ContactSection() {
                     href="mailto:hello@reliablefitness.com"
                     className="text-primary hover:underline font-medium transition-colors"
                   >
-                    hello@reliablefitness.com
+                    Nkosinathi@reliablefitness.com
                   </a>
                 </div>
               </div>
@@ -187,7 +187,7 @@ export function ContactSection() {
                   <h4 className="text-lg font-bold text-foreground mb-1">Call Us</h4>
                   <p className="text-muted-foreground mb-2">Mon-Fri, 9am-6pm EST</p>
                   <a href="tel:+15550001234" className="text-primary hover:underline font-medium transition-colors">
-                    +1 (555) 000-1234
+                    +27 62 830 5024
                   </a>
                 </div>
               </div>
@@ -205,9 +205,9 @@ export function ContactSection() {
                   <h4 className="text-lg font-bold text-foreground mb-1">Visit Us</h4>
                   <p className="text-muted-foreground mb-2">Headquarters</p>
                   <address className="not-italic text-foreground">
-                    123 Fitness Street
+                    Tsamaya Street
                     <br />
-                    San Francisco, CA 94102
+                    Edenvale, Gauteng, South Africa
                   </address>
                 </div>
               </div>

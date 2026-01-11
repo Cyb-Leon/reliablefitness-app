@@ -52,11 +52,12 @@ export function Navigation() {
           {/* Centered Logo */}
           <Link
             href="/"
-            className="text-xl md:text-2xl xl:text-3xl font-bold tracking-tight transition-all duration-300 hover:scale-105"
+            className="flex text-xl md:text-2xl xl:text-3xl font-bold tracking-tight transition-all duration-300 hover:scale-105 items-center justify-center absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0"
             style={{ fontFamily: "var(--font-bebas)" }}
           >
-            <span className="text-primary">RELIABLE</span>
-            <span className="text-foreground">FITNESS</span>
+            <span className="lg:inline text-primary lg:-mr-6">RELIABLE</span>
+            <img src="/logbg.png" alt="ReliableFitness" className="w-30 h-30 lg:w-30 lg:h-30" />
+            <span className="lg:inline text-foreground lg:-ml-7">FITNESS</span>
           </Link>
 
           {/* Right Navigation Links - Desktop Only */}
