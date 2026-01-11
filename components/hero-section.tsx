@@ -1,0 +1,233 @@
+"use client"
+
+import { useEffect, useRef, useState } from "react"
+import { Button } from "@/components/ui/button"
+import { ArrowRight, Users, Zap, ChevronLeft, ChevronRight } from "lucide-react"
+
+const slides = [
+  {
+    image: "/diverse-group-of-people-doing-intense-group-fitnes.jpg",
+    title: "Group Fitness. Anywhere. Everywhere.",
+    subtitle: "Structured group workouts for communities, companies, and teams",
+  },
+  {
+    image: "/people-doing-pushups-group-fitness-training-animat.jpg",
+    title: "Build Strength Together",
+    subtitle: "Bodyweight training that pushes your limits as a team",
+  },
+  {
+    image: "/group-of-people-running-together-outdoor-fitness-t.jpg",
+    title: "Run With Your Crew",
+    subtitle: "Outdoor fitness programs that bring people together",
+  },
+  {
+    image: "/group-kickboxing-fitness-class-people-training-tog.jpg",
+    title: "High-Energy Boxing",
+    subtitle: "Cardio kickboxing classes that pack a punch",
+  },
+  {
+    image: "/group-yoga-fitness-class-people-stretching-togethe.jpg",
+    title: "Mind & Body Wellness",
+    subtitle: "Yoga and stretching for balanced team fitness",
+  },
+  {
+    image: "/hiit-high-intensity-interval-training-group-workou.jpg",
+    title: "HIIT The Next Level",
+    subtitle: "High-intensity intervals that deliver maximum results",
+  },
+]
+
+export function HeroSection() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const heroRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (isPaused) return
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [isPaused])
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length)
+    setIsPaused(true)
+    setTimeout(() => setIsPaused(false), 10000)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+    setIsPaused(true)
+    setTimeout(() => setIsPaused(false), 10000)
+  }
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index)
+    setIsPaused(true)
+    setTimeout(() => setIsPaused(false), 10000)
+  }
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-fade-in-up")
+          }
+        })
+      },
+      { threshold: 0.1 },
+    )
+
+    const elements = heroRef.current?.querySelectorAll(".animate-on-scroll")
+    elements?.forEach((el) => observer.observe(el))
+
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
+            index === currentSlide ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <img
+            src={slide.image || "/placeholder.svg"}
+            alt={slide.title}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-secondary/90 via-foreground/80 to-secondary/85" />
+          <div className="absolute inset-0 bg-primary/10" />
+        </div>
+      ))}
+
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 bg-background/20 hover:bg-background/30 backdrop-blur-sm p-3 rounded-full border border-background/30 transition-all duration-300 hover:scale-110 group"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft className="w-6 h-6 text-background transition-transform group-hover:-translate-x-1" />
+      </button>
+
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 bg-background/20 hover:bg-background/30 backdrop-blur-sm p-3 rounded-full border border-background/30 transition-all duration-300 hover:scale-110 group"
+        aria-label="Next slide"
+      >
+        <ChevronRight className="w-6 h-6 text-background transition-transform group-hover:translate-x-1" />
+      </button>
+
+      <div className="container mx-auto px-4 py-32 relative z-20">
+        <div className="max-w-5xl mx-auto text-center space-y-8">
+          <h1
+            className="animate-fade-in-up text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-background drop-shadow-2xl transition-all duration-500"
+            style={{ fontFamily: "var(--font-bebas)" }}
+            key={`title-${currentSlide}`}
+          >
+            {slides[currentSlide].title.split(".")[0]}.{" "}
+            <span className="text-primary">{slides[currentSlide].title.split(".").slice(1).join(".")}</span>
+          </h1>
+
+          <p
+            className="animate-fade-in-up text-xl md:text-2xl text-background/95 max-w-3xl mx-auto leading-relaxed drop-shadow-lg transition-all duration-500"
+            style={{ animationDelay: "0.2s" }}
+            key={`subtitle-${currentSlide}`}
+          >
+            {slides[currentSlide].subtitle}
+          </p>
+
+          {/* Feature Pills */}
+          <div
+            className="animate-on-scroll flex flex-wrap items-center justify-center gap-4 pt-4"
+            style={{ animationDelay: "0.4s" }}
+          >
+            <div className="flex items-center gap-2 px-4 py-2 bg-background/10 backdrop-blur-sm rounded-full border border-background/20">
+              <Users className="w-5 h-5 text-primary" />
+              <span className="text-background font-medium">Group Energy</span>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-background/10 backdrop-blur-sm rounded-full border border-background/20">
+              <Zap className="w-5 h-5 text-primary" />
+              <span className="text-background font-medium">Scalable Programs</span>
+            </div>
+          </div>
+
+          <div
+            className="animate-on-scroll flex flex-col sm:flex-row items-center justify-center gap-4 pt-8"
+            style={{ animationDelay: "0.6s" }}
+          >
+            <Button
+              size="lg"
+              className="relative bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-10 py-7 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] group overflow-hidden"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+              <span className="relative flex items-center gap-2 font-semibold">
+                Join a Group
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
+              </span>
+            </Button>
+            <Button
+              size="lg"
+              className="relative bg-background/95 hover:bg-background text-foreground border-2 border-background hover:border-primary text-lg px-10 py-7 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] group overflow-hidden"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+              <span className="relative font-semibold">Partner With Us</span>
+            </Button>
+          </div>
+
+          {/* Stats */}
+          <div
+            className="animate-on-scroll grid grid-cols-3 gap-8 max-w-3xl mx-auto pt-16"
+            style={{ animationDelay: "0.8s" }}
+          >
+            <div className="space-y-2">
+              <div className="text-4xl md:text-5xl font-bold text-primary" style={{ fontFamily: "var(--font-bebas)" }}>
+                500+
+              </div>
+              <div className="text-background/80 font-medium">Active Groups</div>
+            </div>
+            <div className="space-y-2">
+              <div className="text-4xl md:text-5xl font-bold text-primary" style={{ fontFamily: "var(--font-bebas)" }}>
+                50K+
+              </div>
+              <div className="text-background/80 font-medium">Participants</div>
+            </div>
+            <div className="space-y-2">
+              <div className="text-4xl md:text-5xl font-bold text-primary" style={{ fontFamily: "var(--font-bebas)" }}>
+                100+
+              </div>
+              <div className="text-background/80 font-medium">Corporate Partners</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`transition-all duration-300 rounded-full ${
+              index === currentSlide
+                ? "w-12 h-3 bg-primary"
+                : "w-3 h-3 bg-background/40 hover:bg-background/60 hover:scale-110"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-20">
+        <div className="w-6 h-10 border-2 border-background/50 rounded-full flex items-start justify-center p-2">
+          <div className="w-1 h-3 bg-primary rounded-full animate-pulse" />
+        </div>
+      </div>
+    </section>
+  )
+}
