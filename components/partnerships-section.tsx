@@ -48,8 +48,18 @@ export function PartnershipsSection() {
   }, [])
 
   return (
-    <section id="partnerships" ref={sectionRef} className="py-24 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="partnerships" ref={sectionRef} className="relative py-24 overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <div
+          className="absolute w-full h-full bg-cover bg-right bg-fixed"
+          style={{ backgroundImage: "url('/bg2.jpg')" }}
+        />
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background" />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-4">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="animate-on-scroll inline-block px-4 py-2 bg-primary/10 rounded-full">

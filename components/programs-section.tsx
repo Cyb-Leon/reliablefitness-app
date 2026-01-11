@@ -62,8 +62,27 @@ export function ProgramsSection() {
   }, [])
 
   return (
-    <section id="programs" ref={sectionRef} className="py-24 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="programs" ref={sectionRef} className="relative py-24 bg-background overflow-hidden">
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute w-full h-full object-cover"
+          poster="/grp1.jpg"
+        >
+          <source
+            src="/bgvio1.mp4"
+            type="video/mp4"
+          />
+        </video>
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background" />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-4">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="animate-on-scroll inline-block px-4 py-2 bg-primary/10 rounded-full">
