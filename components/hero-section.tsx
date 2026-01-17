@@ -141,13 +141,13 @@ export function HeroSection() {
             >
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               <span className="relative flex items-center gap-2 font-semibold">
-                Join a Group
+                Join Nathi
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
               </span>
             </Button>
             <Button
               size="lg"
-              className="relative bg-background/5 hover:bg-background text-background border-2 border-background hover:border-primary text-lg px-5 py-7 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] group overflow-hidden"
+              className="relative bg-background/5 hover:bg-background hover:text-primary border-2 border-background hover:border-primary text-lg px-5 py-7 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] group overflow-hidden"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               <span className="relative font-semibold">Partner With Us</span>

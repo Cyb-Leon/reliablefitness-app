@@ -76,14 +76,14 @@ export function Navigation() {
               size="default"
               className="bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300 hover:scale-105 shadow-md"
             >
-              Join a Group
+              Join Nathi
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-foreground hover:text-primary transition-colors ml-auto"
+            className="lg:hidden p-2 text-background hover:text-primary transition-colors ml-auto"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -113,13 +113,15 @@ export function Navigation() {
                   {link.label}
                 </Link>
               ))}
+
               <div className="pt-3 px-4">
                 <Button
                   size="lg"
-                  className="bg-primary text-2xl hover:bg-primary/90 text-primary-foreground w-full shadow-md transition-all duration-300"
+                  className="bg-primary py-8 text-2xl hover:bg-primary/90 text-primary-foreground w-full shadow-md transition-all duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
+                  style={{ fontFamily: "var(--font-bebas)" }}
                 >
-                  Join a Group
+                  Join Nkosinathi
                 </Button>
               </div>
             </div>
