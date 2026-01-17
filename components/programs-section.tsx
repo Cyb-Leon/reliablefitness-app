@@ -81,23 +81,15 @@ export function ProgramsSection() {
 
   return (
     <section id="programs" ref={sectionRef} className="relative py-24 bg-background overflow-hidden">
-      {/* Background Video */}
+
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute w-full h-full object-cover"
-          poster="/grp1.jpg"
-        >
-          <source
-            src="/bgvio1.mp4"
-            type="video/mp4"
-          />
-        </video>
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/20 to-black/50" />
+        {/* Logo Background */}
+        <div
+          className="absolute inset-0 bg-no-repeat bg-center bg-contain opacity-10"
+          style={{ backgroundImage: "url(/logbg.png)" }}
+        />
+        {/* Black overlay for smooth flow between sections */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4">
@@ -107,13 +99,13 @@ export function ProgramsSection() {
             <span className="text-primary font-semibold uppercase tracking-wide text-sm">Our Programs</span>
           </div>
           <h2
-            className="animate-on-scroll text-4xl md:text-6xl font-bold text-foreground"
+            className="animate-on-scroll text-4xl md:text-6xl font-bold text-background"
             style={{ fontFamily: "var(--font-bebas)", animationDelay: "0.1s" }}
           >
             Group Fitness <span className="text-primary">Programs</span>
           </h2>
           <p
-            className="animate-on-scroll text-lg text-muted-foreground leading-relaxed"
+            className="animate-on-scroll text-lg text-background leading-relaxed"
             style={{ animationDelay: "0.2s" }}
           >
             Choose the program that fits your lifestyle and goals. Every session is designed to maximize group energy
@@ -180,10 +172,55 @@ export function ProgramsSection() {
 
         {/* Benefits Section */}
         <div
-          className="animate-on-scroll grid md:grid-cols-3 gap-8 mt-20 p-8 bg-gradient-to-br from-muted to-muted/50 rounded-2xl"
+          className="animate-on-scroll relative overflow-hidden grid md:grid-cols-3 gap-8 mt-20 p-8 bg-gradient-to-br from-muted to-muted/50 rounded-2xl"
           style={{ animationDelay: "0.7s" }}
         >
-          <div className="text-center space-y-3 group">
+          {/* Top-left corner logo - tilted */}
+          <div className="absolute -top-6 -left-6 pointer-events-none">
+            <img
+              src="/logbg.png"
+              alt=""
+              className="w-24 h-24 opacity-25 animate-spin"
+              style={{ animationDuration: "20s", transform: "rotate(-15deg)" }}
+            />
+          </div>
+          {/* Bottom-right corner logo - larger, slow spin */}
+          <div className="absolute -bottom-10 -right-10 pointer-events-none">
+            <img
+              src="/logbg.png"
+              alt=""
+              className="w-40 h-40 opacity-25 animate-spin"
+              style={{ animationDuration: "30s", animationDirection: "reverse" }}
+            />
+          </div>
+          {/* Center-right floating logo */}
+          <div className="absolute top-4 right-1/4 pointer-events-none hidden md:block">
+            <img
+              src="/logbg.png"
+              alt=""
+              className="w-16 h-16 opacity-25"
+              style={{ animation: "float 6s ease-in-out infinite" }}
+            />
+          </div>
+          {/* Bottom-left accent */}
+          <div className="absolute bottom-2 left-1/3 pointer-events-none hidden md:block">
+            <img
+              src="/logbg.png"
+              alt=""
+              className="w-12 h-12 opacity-25"
+              style={{ animation: "float 5s ease-in-out infinite", animationDelay: "1.5s" }}
+            />
+          </div>
+          
+          {/* Custom float animation */}
+          <style jsx>{`
+            @keyframes float {
+              0%, 100% { transform: translateY(0) rotate(0deg); }
+              50% { transform: translateY(-10px) rotate(5deg); }
+            }
+          `}</style>
+
+          <div className="relative text-center space-y-3 group">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-full mb-2 transition-transform duration-300 group-hover:scale-110">
               <MapPin className="w-8 h-8 text-primary-foreground" />
             </div>
@@ -193,7 +230,7 @@ export function ProgramsSection() {
             </p>
           </div>
 
-          <div className="text-center space-y-3 group">
+          <div className="relative text-center space-y-3 group">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-secondary rounded-full mb-2 transition-transform duration-300 group-hover:scale-110">
               <Users2 className="w-8 h-8 text-secondary-foreground" />
             </div>
@@ -203,7 +240,7 @@ export function ProgramsSection() {
             </p>
           </div>
 
-          <div className="text-center space-y-3 group">
+          <div className="relative text-center space-y-3 group">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-full mb-2 transition-transform duration-300 group-hover:scale-110">
               <TrendingUp className="w-8 h-8 text-primary-foreground" />
             </div>
@@ -237,6 +274,15 @@ export function ProgramsSection() {
             {/* Overlay for readability */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90" />
 
+            {/* Embroidered Logo - Prominently Visible */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <img
+                src="/logbg.png"
+                alt=""
+                className="w-[80%] max-w-[400px] h-auto opacity-30 drop-shadow-2xl"
+              />
+            </div>
+
             {/* Close Button */}
             <button
               onClick={() => setSelectedProgram(null)}
@@ -247,23 +293,30 @@ export function ProgramsSection() {
             </button>
 
             {/* Content */}
-            <div className="relative z-10 p-8 md:p-12 space-y-6">
-
-              {/* Title */}
-              <h3
-                className="text-3xl md:text-4xl font-bold text-white"
-                style={{ fontFamily: "var(--font-bebas)" }}
-              >
-                {selectedProgram.title}
-              </h3>
+            <div className="relative h-full z-10 p-8 md:p-12 flex flex-col">
+              {/* Logo Header */}
+              <div className="flex items-center gap-4">
+                <img
+                  src="/logbg.png"
+                  alt="ReliableFitness"
+                  className="w-16 h-16 drop-shadow-lg"
+                />
+                <div className="h-12 w-px bg-primary/50" />
+                <h3
+                  className="text-3xl md:text-4xl font-bold text-white"
+                  style={{ fontFamily: "var(--font-bebas)" }}
+                >
+                  {selectedProgram.title}
+                </h3>
+              </div>
 
               {/* Description */}
-              <p className="text-lg text-white/80 leading-relaxed">
+              <p className="text-lg text-white/80 leading-relaxed mt-6">
                 {selectedProgram.description}
               </p>
 
               {/* Features */}
-              <div className="space-y-3">
+              <div className="space-y-3 mt-6">
                 <h4 className="text-sm font-semibold text-primary uppercase tracking-wide">Features</h4>
                 <div className="flex flex-wrap gap-3">
                   {selectedProgram.features.map((feature) => (
@@ -278,8 +331,8 @@ export function ProgramsSection() {
                 </div>
               </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              {/* CTA Buttons - Pushed to bottom */}
+              <div className="flex flex-col sm:flex-row gap-4 mt-auto pt-8">
                 <Button
                   size="lg"
                   className="bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300"
@@ -299,7 +352,6 @@ export function ProgramsSection() {
             </div>
           </div>
         </div>
-        
       )}
     </section>
   )
