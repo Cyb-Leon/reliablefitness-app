@@ -29,8 +29,8 @@ export function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md shadow-lg" : "bg-background/80 backdrop-blur-sm"
+      className={`fixed top-0 left-0 right-0 z-50 py-2 transition-all duration-300 ${
+        isScrolled ? "bg-black/65 backdrop-blur-md shadow-lg" : "bg-black/30 backdrop-blur-sm"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6">
@@ -41,7 +41,7 @@ export function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm xl:text-base text-foreground/80 hover:text-primary font-medium transition-colors duration-200 relative group"
+                className="text-sm xl:text-base text-white/80 hover:text-primary font-medium transition-colors duration-200 relative group"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
@@ -52,12 +52,12 @@ export function Navigation() {
           {/* Centered Logo */}
           <Link
             href="/"
-            className="flex text-xl md:text-2xl xl:text-3xl font-bold tracking-tight transition-all duration-300 hover:scale-105 items-center justify-center absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0"
+            className="flex text-xl tracking-widest md:text-2xl xl:text-3xl font-bold tracking-tight transition-all duration-300 hover:scale-105 items-center justify-center absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0"
             style={{ fontFamily: "var(--font-bebas)" }}
           >
             <span className="lg:inline text-primary lg:-mr-6">RELIABLE</span>
             <img src="/logbg.png" alt="ReliableFitness" className="w-30 h-30 lg:w-30 lg:h-30" />
-            <span className="lg:inline text-foreground lg:-ml-7">FITNESS</span>
+            <span className="lg:inline text-background lg:-ml-7">FITNESS</span>
           </Link>
 
           {/* Right Navigation Links - Desktop Only */}
@@ -66,7 +66,7 @@ export function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm xl:text-base text-foreground/80 hover:text-primary font-medium transition-colors duration-200 relative group"
+                className="text-sm xl:text-base text-white/80 hover:text-primary font-medium transition-colors duration-200 relative group"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
@@ -93,20 +93,21 @@ export function Navigation() {
 
       <div
         className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          isMobileMenuOpen ? "h-[calc(100vh-4rem)] opacity-100" : "h-0 opacity-0"
         }`}
       >
-        <div className="bg-background/98 backdrop-blur-md border-t border-border/50 shadow-xl">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col py-4 gap-1">
+        <div className="bg-black/48 backdrop-blur-md border-t border-border/50 shadow-xl h-full">
+          <div className="container mx-auto px-4 h-full">
+            <div className="flex flex-col py-4 gap-1 h-full">
               {navLinks.map((link, index) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-foreground/90 hover:text-primary hover:bg-primary/5 font-medium py-3 px-4 rounded-lg transition-all duration-200"
+                  className="flex text-5xl tracking-widest text-white/90 hover:text-primary hover:bg-primary/5 font-medium py-12 px-4 rounded-lg transition-all duration-200"
                   style={{
                     animation: isMobileMenuOpen ? `slideIn 0.3s ease-out ${index * 0.05}s both` : "none",
+                    fontFamily: "var(--font-bebas)" 
                   }}
                 >
                   {link.label}
@@ -115,7 +116,7 @@ export function Navigation() {
               <div className="pt-3 px-4">
                 <Button
                   size="lg"
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground w-full shadow-md transition-all duration-300"
+                  className="bg-primary text-2xl hover:bg-primary/90 text-primary-foreground w-full shadow-md transition-all duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Join a Group

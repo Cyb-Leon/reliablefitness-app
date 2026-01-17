@@ -116,12 +116,12 @@ export function HeroSection() {
         
         <div className="max-w-5xl mx-auto text-center space-y-8">
           <h1
-            className="animate-fade-in-up text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-background drop-shadow-2xl transition-all duration-500"
-            style={{ fontFamily: "'Clash Display', 'Montserrat', Arial, Helvetica, sans-serif" }}
+            className="animate-fade-in-up tracking-wider text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-background drop-shadow-2xl transition-all duration-500"
+            style={{ fontFamily: "var(--font-bebas)" }}
             key={`title-${currentSlide}`}
           >
             {slides[currentSlide].title.split(".")[0]}.{" "}
-            <span className="text-primary">{slides[currentSlide].title.split(".").slice(1).join(".")}</span>
+            <span className="text-red-200">{slides[currentSlide].title.split(".").slice(1).join(".")}</span>
           </h1>
 
           <p
