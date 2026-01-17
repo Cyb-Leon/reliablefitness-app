@@ -123,7 +123,7 @@ export function HeroSection() {
         <ChevronRight className="w-6 h-6 text-background transition-transform group-hover:translate-x-1" />
       </button> */}
 
-      <div className="container mx-auto px-4 py-32 relative z-20">
+      <div className="container  mx-auto px-4 relative z-20">
         <div className="max-w-5xl mx-auto text-center space-y-8">
           <h1
             className="animate-fade-in-up text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-background drop-shadow-2xl transition-all duration-500"
@@ -140,13 +140,13 @@ export function HeroSection() {
           >
             {slides[currentSlide].subtitle}
           </p>
-
+       
           <div
             className="animate-on-scroll flex flex-row sm:flex-row items-center justify-center gap-4 pt-8"
           >
             <Button
               size="lg"
-              className="relative bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-10 py-7 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] group overflow-hidden"
+              className="relative bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-5 py-7 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] group overflow-hidden"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               <span className="relative flex items-center gap-2 font-semibold">
@@ -156,7 +156,7 @@ export function HeroSection() {
             </Button>
             <Button
               size="lg"
-              className="relative bg-background/95 hover:bg-background text-foreground border-2 border-background hover:border-primary text-lg px-10 py-7 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] group overflow-hidden"
+              className="relative bg-background/5 hover:bg-background text-background border-2 border-background hover:border-primary text-lg px-5 py-7 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] group overflow-hidden"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               <span className="relative font-semibold">Partner With Us</span>
