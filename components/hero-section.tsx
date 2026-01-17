@@ -12,27 +12,27 @@ const slides = [
   },
   {
     image: "/bg1.jpg",
-    title: "Build Strength Together",
+    title: "Group Fitness. Anywhere. Everywhere.",
     subtitle: "Bodyweight training that pushes your limits as a team",
   },
   {
     image: "/grp2.jpg",
-    title: "Run With Your Crew",
+    title: "Group Fitness. Anywhere. Everywhere.",
     subtitle: "Outdoor fitness programs that bring people together",
   },
   {
     image: "/bg2.jpg",
-    title: "High-Energy Boxing",
+    title: "Group Fitness. Anywhere. Everywhere.",
     subtitle: "Cardio kickboxing classes that pack a punch",
   },
   {
     image: "/grp3.jpg",
-    title: "Mind & Body Wellness",
+    title: "Group Fitness. Anywhere. Everywhere.",
     subtitle: "Yoga and stretching for balanced team fitness",
   },
   {
     image: "/grp4.jpg",
-    title: "HIIT The Next Level",
+    title: "Group Fitness. Anywhere. Everywhere.",
     subtitle: "High-intensity intervals that deliver maximum results",
   },
 ]
@@ -67,7 +67,7 @@ export function HeroSection() {
   const goToSlide = (index: number) => {
     setCurrentSlide(index)
     setIsPaused(true)
-    setTimeout(() => setIsPaused(false), 10000)
+    setTimeout(() => setIsPaused(false), 20000)
   }
 
   useEffect(() => {
@@ -107,7 +107,7 @@ export function HeroSection() {
         </div>
       ))}
 
-      <button
+      {/* <button
         onClick={prevSlide}
         className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 bg-background/20 hover:bg-background/30 backdrop-blur-sm p-3 rounded-full border border-background/30 transition-all duration-300 hover:scale-110 group"
         aria-label="Previous slide"
@@ -121,7 +121,7 @@ export function HeroSection() {
         aria-label="Next slide"
       >
         <ChevronRight className="w-6 h-6 text-background transition-transform group-hover:translate-x-1" />
-      </button>
+      </button> */}
 
       <div className="container mx-auto px-4 py-32 relative z-20">
         <div className="max-w-5xl mx-auto text-center space-y-8">
@@ -136,30 +136,13 @@ export function HeroSection() {
 
           <p
             className="animate-fade-in-up text-xl md:text-2xl text-background/95 max-w-3xl mx-auto leading-relaxed drop-shadow-lg transition-all duration-500"
-            style={{ animationDelay: "0.2s" }}
             key={`subtitle-${currentSlide}`}
           >
             {slides[currentSlide].subtitle}
           </p>
 
-          {/* Feature Pills */}
           <div
-            className="animate-on-scroll flex flex-wrap items-center justify-center gap-4 pt-4"
-            style={{ animationDelay: "0.4s" }}
-          >
-            <div className="flex items-center gap-2 px-4 py-2 bg-background/10 backdrop-blur-sm rounded-full border border-background/20">
-              <Users className="w-5 h-5 text-primary" />
-              <span className="text-background font-medium">Group Energy</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-background/10 backdrop-blur-sm rounded-full border border-background/20">
-              <Zap className="w-5 h-5 text-primary" />
-              <span className="text-background font-medium">Scalable Programs</span>
-            </div>
-          </div>
-
-          <div
-            className="animate-on-scroll flex flex-col sm:flex-row items-center justify-center gap-4 pt-8"
-            style={{ animationDelay: "0.6s" }}
+            className="animate-on-scroll flex flex-row sm:flex-row items-center justify-center gap-4 pt-8"
           >
             <Button
               size="lg"
@@ -179,35 +162,10 @@ export function HeroSection() {
               <span className="relative font-semibold">Partner With Us</span>
             </Button>
           </div>
-
-          {/* Stats */}
-          <div
-            className="animate-on-scroll grid grid-cols-3 gap-8 max-w-3xl mx-auto pt-16"
-            style={{ animationDelay: "0.8s" }}
-          >
-            <div className="space-y-2">
-              <div className="text-4xl md:text-5xl font-bold text-primary" style={{ fontFamily: "var(--font-bebas)" }}>
-                10+
-              </div>
-              <div className="text-background/80 font-medium">Active Groups</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl md:text-5xl font-bold text-primary" style={{ fontFamily: "var(--font-bebas)" }}>
-                5K+
-              </div>
-              <div className="text-background/80 font-medium">Participants</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl md:text-5xl font-bold text-primary" style={{ fontFamily: "var(--font-bebas)" }}>
-                10+
-              </div>
-              <div className="text-background/80 font-medium">Corporate Partners</div>
-            </div>
-          </div>
         </div>
       </div>
 
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+      {/* <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 flex gap-3">
         {slides.map((_, index) => (
           <button
             key={index}
@@ -220,7 +178,7 @@ export function HeroSection() {
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
-      </div>
+      </div> */}
 
     </section>
   )
