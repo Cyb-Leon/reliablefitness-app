@@ -116,11 +116,11 @@ export function HeroSection() {
         
         <div className="max-w-5xl mx-auto text-center space-y-8">
           <h1
-            className="animate-fade-in-up tracking-wider text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-background drop-shadow-2xl transition-all duration-500"
+            className="tracking-wider text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-background drop-shadow-2xl"
             style={{ fontFamily: "var(--font-bebas)" }}
             key={`title-${currentSlide}`}
           >
-            {slides[currentSlide].title.split(".")[0]}.{" "}
+            {/* {slides[currentSlide].title.split(".")[0]}.{" "} */}
             <span className="text-red-200">{slides[currentSlide].title.split(".").slice(1).join(".")}</span>
           </h1>
 
@@ -132,7 +132,7 @@ export function HeroSection() {
           </p>
        
           <div
-            className="animate-on-scroll flex flex-row sm:flex-row items-center justify-center gap-4 pt-4"
+            className="animate-on-scroll flex flex-row sm:flex-row items-center justify-center gap-4 pt-2"
           >
             
             <Button
