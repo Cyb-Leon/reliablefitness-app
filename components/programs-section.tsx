@@ -1,9 +1,9 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Mountain, Building2, Users2, Monitor, ArrowRight, MapPin, TrendingUp } from "lucide-react"
+import { Mountain, Building2, Users2, Monitor, ArrowRight, MapPin, TrendingUp, X } from "lucide-react"
 
 const programs = [
   {
@@ -40,8 +40,11 @@ const programs = [
   },
 ]
 
+type Program = typeof programs[number]
+
 export function ProgramsSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
+  const [selectedProgram, setSelectedProgram] = useState<Program | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -61,6 +64,21 @@ export function ProgramsSection() {
     return () => observer.disconnect()
   }, [])
 
+  // Handle modal scroll lock and escape key
+  useEffect(() => {
+    if (selectedProgram) {
+      document.body.style.overflow = "hidden"
+      const handleEscape = (e: KeyboardEvent) => {
+        if (e.key === "Escape") setSelectedProgram(null)
+      }
+      window.addEventListener("keydown", handleEscape)
+      return () => {
+        document.body.style.overflow = ""
+        window.removeEventListener("keydown", handleEscape)
+      }
+    }
+  }, [selectedProgram])
+
   return (
     <section id="programs" ref={sectionRef} className="relative py-24 bg-background overflow-hidden">
       {/* Background Video */}
@@ -79,7 +97,7 @@ export function ProgramsSection() {
           />
         </video>
         {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/20 to-black/50" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4">
@@ -104,7 +122,7 @@ export function ProgramsSection() {
         </div>
 
         {/* Programs Grid */}
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 gap-6">
           {programs.map((program, index) => {
             const Icon = program.icon
             return (
@@ -112,6 +130,7 @@ export function ProgramsSection() {
                 key={program.title}
                 className="animate-on-scroll group relative overflow-hidden border-2 hover:border-primary transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
                 style={{ animationDelay: `${0.3 + index * 0.1}s` }}
+                onClick={() => setSelectedProgram(program)}
               >
                 {/* Background Image */}
                 <div
@@ -119,19 +138,13 @@ export function ProgramsSection() {
                   style={{ backgroundImage: `url(${program.image})` }}
                 />
                 {/* Overlay for readability */}
-                <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-background/80 group-hover:from-background/90 group-hover:via-background/85 group-hover:to-background/75 transition-all duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/20 group-hover:from-black/90 group-hover:via-black/85 group-hover:to-black/75 transition-all duration-500" />
                 
-                <div className="relative p-8 space-y-6">
-                  {/* Icon and Title */}
+                <div className="relative px-8 min-h-[350px] flex flex-col justify-end space-y-4">
                   <div className="flex items-start gap-4">
-                    <div
-                      className={`${program.color} p-4 rounded-xl text-primary-foreground transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}
-                    >
-                      <Icon className="w-8 h-8" />
-                    </div>
                     <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-foreground mb-2">{program.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed">{program.description}</p>
+                      <h3 className="text-2xl font-bold text-white mb-2">{program.title}</h3>
+                      <p className="text-muted-foreground hidden leading-relaxed">{program.description}</p>
                     </div>
                   </div>
 
@@ -151,17 +164,15 @@ export function ProgramsSection() {
                   {/* CTA */}
                   <Button
                     variant="ghost"
-                    className="w-full group/btn hover:bg-primary/10 text-primary transition-all duration-300"
+                    className="w-full group/btn font-bold hover:bg-primary/10 text-primary transition-all duration-300"
+                    onClick={() => setSelectedProgram(program)}
                   >
                     Learn More
                     <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                   </Button>
                 </div>
 
-                {/* Decorative element */}
-                <div
-                  className={`absolute -right-20 -bottom-20 w-40 h-40 ${program.color} rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-3xl`}
-                />
+
               </Card>
             )
           })}
@@ -203,6 +214,93 @@ export function ProgramsSection() {
           </div>
         </div>
       </div>
+
+      {/* Program Modal */}
+      {selectedProgram && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedProgram(null)}
+        >
+          {/* Backdrop with blur */}
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-md" />
+
+          {/* Modal Content */}
+          <div
+            className="relative w-full max-w-2xl h-full overflow-auto rounded-2xl shadow-2xl animate-in fade-in zoom-in-95 duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Background Image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${selectedProgram.image})` }}
+            />
+            {/* Overlay for readability */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90" />
+
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedProgram(null)}
+              className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors duration-200"
+              aria-label="Close modal"
+            >
+              <X size={24} />
+            </button>
+
+            {/* Content */}
+            <div className="relative z-10 p-8 md:p-12 space-y-6">
+
+              {/* Title */}
+              <h3
+                className="text-3xl md:text-4xl font-bold text-white"
+                style={{ fontFamily: "var(--font-bebas)" }}
+              >
+                {selectedProgram.title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-lg text-white/80 leading-relaxed">
+                {selectedProgram.description}
+              </p>
+
+              {/* Features */}
+              <div className="space-y-3">
+                <h4 className="text-sm font-semibold text-primary uppercase tracking-wide">Features</h4>
+                <div className="flex flex-wrap gap-3">
+                  {selectedProgram.features.map((feature) => (
+                    <div
+                      key={feature}
+                      className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm text-white"
+                    >
+                      <div className="w-2 h-2 bg-primary rounded-full" />
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300"
+                >
+                  Join This Program
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white/30 text-black hover:bg-white/10 transition-all duration-300"
+                  onClick={() => setSelectedProgram(null)}
+                >
+                  Close
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      )}
     </section>
   )
 }
