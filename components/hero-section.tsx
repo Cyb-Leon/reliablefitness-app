@@ -137,6 +137,7 @@ export function HeroSection() {
             
             <Button
               size="lg"
+              onClick={() => window.open("https://wa.me/27628305024?text=Hi%20Nathi!%20I'm%20interested%20in%20joining%20a%20group%20fitness%20session.", "_blank")}
               className="relative bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-5 py-7 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] group overflow-hidden"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
@@ -147,6 +148,7 @@ export function HeroSection() {
             </Button>
             <Button
               size="lg"
+              onClick={() => window.open("https://wa.me/27628305024?text=Hi%20Nathi!%20I'm%20interested%20in%20partnering%20with%20ReliableFitness.", "_blank")}
               className="relative bg-background/5 hover:bg-background hover:text-primary border-2 border-background hover:border-primary text-lg px-5 py-7 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] group overflow-hidden"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />

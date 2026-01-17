@@ -335,6 +335,7 @@ export function ProgramsSection() {
               <div className="flex flex-col sm:flex-row gap-4 mt-auto pt-8">
                 <Button
                   size="lg"
+                  onClick={() => window.open(`https://wa.me/27628305024?text=Hi%20Nathi!%20I'm%20interested%20in%20joining%20the%20${encodeURIComponent(selectedProgram.title)}%20program.`, "_blank")}
                   className="bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300"
                 >
                   Join This Program

@@ -32,21 +32,43 @@ export function ContactSection() {
   }, [])
 
   return (
-    <section id="contact" ref={sectionRef} className="py-24 bg-gradient-to-b from-background to-muted/30">
-      <div className="container mx-auto px-4">
+    <section id="contact" ref={sectionRef} className="relative py-24 overflow-hidden">
+      {/* Background with Logo */}
+      <div className="absolute inset-0 z-0">
+        {/* Logo Background - bottom right large */}
+        <div className="absolute bottom-0 right-0 pointer-events-none">
+          <img
+            src="/logbg.png"
+            alt=""
+            className="w-[500px] h-[500px] opacity-15 translate-x-1/4 translate-y-1/4"
+          />
+        </div>
+        {/* Logo Background - top left accent */}
+        <div className="absolute top-0 left-0 pointer-events-none">
+          <img
+            src="/logbg.png"
+            alt=""
+            className="w-[300px] h-[300px] opacity-10 -translate-x-1/3 -translate-y-1/3"
+          />
+        </div>
+        {/* Black overlay for smooth flow between sections */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black" />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-4">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="animate-on-scroll inline-block px-4 py-2 bg-primary/10 rounded-full">
             <span className="text-primary font-semibold uppercase tracking-wide text-sm">Get Started</span>
           </div>
           <h2
-            className="animate-on-scroll text-4xl md:text-6xl font-bold text-foreground"
+            className="animate-on-scroll text-4xl md:text-6xl font-bold text-white"
             style={{ fontFamily: "var(--font-bebas)", animationDelay: "0.1s" }}
           >
             Join <span className="text-primary">ReliableFitness</span>
           </h2>
           <p
-            className="animate-on-scroll text-lg text-muted-foreground leading-relaxed"
+            className="animate-on-scroll text-lg text-white/70 leading-relaxed"
             style={{ animationDelay: "0.2s" }}
           >
             Ready to experience the power of group fitness? Connect with us today.
@@ -56,7 +78,7 @@ export function ContactSection() {
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
           <Card
-            className="animate-on-scroll p-8 border-2 hover:border-primary/50 transition-all duration-500"
+            className="animate-on-scroll bg-background/80 backdrop-blur-sm p-8 border-2 hover:border-primary/50 transition-all duration-500"
             style={{ animationDelay: "0.3s" }}
           >
             <form className="space-y-6">
@@ -141,8 +163,9 @@ export function ContactSection() {
 
               {/* Submit Button */}
               <Button
-                type="submit"
+                type="button"
                 size="lg"
+                onClick={() => window.open("https://wa.me/27628305024?text=Hi%20Nathi!%20I'd%20like%20to%20get%20in%20touch%20about%20ReliableFitness.", "_blank")}
                 className="w-full bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300 hover:scale-105 group"
               >
                 Send Message
@@ -155,7 +178,7 @@ export function ContactSection() {
           <div className="space-y-6">
             {/* Contact Cards */}
             <Card
-              className="animate-on-scroll p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-lg group"
+              className="animate-on-scroll bg-background/80 backdrop-blur-sm p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-lg group"
               style={{ animationDelay: "0.4s" }}
             >
               <div className="flex items-start gap-4">
@@ -176,7 +199,7 @@ export function ContactSection() {
             </Card>
 
             <Card
-              className="animate-on-scroll p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-lg group"
+              className="animate-on-scroll bg-background/80 backdrop-blur-sm p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-lg group"
               style={{ animationDelay: "0.5s" }}
             >
               <div className="flex items-start gap-4">
@@ -194,7 +217,7 @@ export function ContactSection() {
             </Card>
 
             <Card
-              className="animate-on-scroll p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-lg group"
+              className="animate-on-scroll bg-background/80 backdrop-blur-sm p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-lg group"
               style={{ animationDelay: "0.6s" }}
             >
               <div className="flex items-start gap-4">
@@ -228,6 +251,7 @@ export function ContactSection() {
                 </p>
                 <Button
                   size="lg"
+                  onClick={() => window.open("https://wa.me/27628305024?text=Hi%20Nathi!%20I'd%20like%20to%20book%20my%20free%20session!", "_blank")}
                   className="bg-background hover:bg-background/90 text-foreground transition-all duration-300 hover:scale-105"
                 >
                   Book Your Free Session

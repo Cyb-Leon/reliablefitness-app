@@ -74,6 +74,7 @@ export function Navigation() {
             ))}
             <Button
               size="default"
+              onClick={() => window.open("https://wa.me/27628305024?text=Hi%20Nathi!%20I'm%20interested%20in%20joining%20a%20group%20fitness%20session.", "_blank")}
               className="bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300 hover:scale-105 shadow-md"
             >
               Join Nathi
@@ -118,7 +119,10 @@ export function Navigation() {
                 <Button
                   size="lg"
                   className="bg-primary py-8 text-2xl hover:bg-primary/90 text-primary-foreground w-full shadow-md transition-all duration-300"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false)
+                    window.open("https://wa.me/27628305024?text=Hi%20Nathi!%20I'm%20interested%20in%20joining%20a%20group%20fitness%20session.", "_blank")
+                  }}
                   style={{ fontFamily: "var(--font-bebas)" }}
                 >
                   Join Nkosinathi

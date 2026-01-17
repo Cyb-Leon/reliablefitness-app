@@ -49,21 +49,35 @@ export function AboutSection() {
   }, [])
 
   return (
-    <section id="about" ref={sectionRef} className="py-24 bg-gradient-to-b from-muted/30 to-background">
-      <div className="container mx-auto px-4">
+    <section id="about" ref={sectionRef} className="relative py-24 overflow-hidden">
+      {/* Background with Logo */}
+      <div className="absolute inset-0 z-0">
+        {/* Logo Background - offset to the right */}
+        <div className="absolute inset-0 flex items-center justify-end pointer-events-none">
+          <img
+            src="/logbg.png"
+            alt=""
+            className="w-[600px] h-[600px] opacity-5 -mr-48"
+          />
+        </div>
+        {/* Black overlay for smooth flow between sections */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black" />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-4">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="animate-on-scroll inline-block px-4 py-2 bg-secondary/10 rounded-full">
-            <span className="text-secondary font-semibold uppercase tracking-wide text-sm">About Us</span>
+          <div className="animate-on-scroll inline-block px-4 py-2 bg-primary/10 rounded-full">
+            <span className="text-primary font-semibold uppercase tracking-wide text-sm">About Us</span>
           </div>
           <h2
-            className="animate-on-scroll text-4xl md:text-6xl font-bold text-foreground"
+            className="animate-on-scroll text-4xl md:text-6xl font-bold text-white"
             style={{ fontFamily: "var(--font-bebas)", animationDelay: "0.1s" }}
           >
             Mission-Driven <span className="text-primary">Group Fitness</span>
           </h2>
           <p
-            className="animate-on-scroll text-lg text-muted-foreground leading-relaxed"
+            className="animate-on-scroll text-lg text-white/70 leading-relaxed"
             style={{ animationDelay: "0.2s" }}
           >
             ReliableFitness exists to make quality group fitness accessible to everyone, everywhere. We're not about
@@ -82,77 +96,6 @@ export function AboutSection() {
           </blockquote>
         </div>
 
-        {/* Values Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {values.map((value, index) => {
-            const Icon = value.icon
-            return (
-              <Card
-                key={value.title}
-                className="animate-on-scroll group p-6 border-2 hover:border-primary transition-all duration-500 hover:shadow-xl relative overflow-hidden"
-                style={{ animationDelay: `${0.4 + index * 0.1}s` }}
-              >
-                {/* Animated gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <div className="relative space-y-4">
-                  <div className="w-14 h-14 bg-primary rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:-rotate-6">
-                    <Icon className="w-7 h-7 text-primary-foreground" />
-                  </div>
-
-                  <h3 className="text-xl font-bold text-foreground">{value.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{value.description}</p>
-                </div>
-
-                {/* Hover effect line */}
-                <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-500 group-hover:w-full" />
-              </Card>
-            )
-          })}
-        </div>
-
-        {/* Impact Stats */}
-        <div
-          className="animate-on-scroll grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 p-8 bg-muted rounded-2xl"
-          style={{ animationDelay: "0.8s" }}
-        >
-          <div className="text-center space-y-2 group">
-            <div
-              className="text-4xl md:text-5xl font-bold text-primary transition-transform duration-300 group-hover:scale-110"
-              style={{ fontFamily: "var(--font-bebas)" }}
-            >
-              50+
-            </div>
-            <div className="text-muted-foreground font-medium">Active Groups</div>
-          </div>
-          <div className="text-center space-y-2 group">
-            <div
-              className="text-4xl md:text-5xl font-bold text-primary transition-transform duration-300 group-hover:scale-110"
-              style={{ fontFamily: "var(--font-bebas)" }}
-            >
-              5K+
-            </div>
-            <div className="text-muted-foreground font-medium">Participants</div>
-          </div>
-          <div className="text-center space-y-2 group">
-            <div
-              className="text-4xl md:text-5xl font-bold text-primary transition-transform duration-300 group-hover:scale-110"
-              style={{ fontFamily: "var(--font-bebas)" }}
-            >
-              10+
-            </div>
-            <div className="text-muted-foreground font-medium">Corporate Partners</div>
-          </div>
-          <div className="text-center space-y-2 group">
-            <div
-              className="text-4xl md:text-5xl font-bold text-primary transition-transform duration-300 group-hover:scale-110"
-              style={{ fontFamily: "var(--font-bebas)" }}
-            >
-              5+
-            </div>
-            <div className="text-muted-foreground font-medium">Cities</div>
-          </div>
-        </div>
       </div>
     </section>
   )

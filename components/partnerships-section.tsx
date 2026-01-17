@@ -49,14 +49,26 @@ export function PartnershipsSection() {
 
   return (
     <section id="partnerships" ref={sectionRef} className="relative py-24 overflow-hidden">
-      {/* Background Image */}
+      {/* Background with Logo */}
       <div className="absolute inset-0 z-0">
-        <div
-          className="absolute w-full h-full bg-cover bg-right bg-fixed"
-          style={{ backgroundImage: "url('/bg2.jpg')" }}
-        />
-        {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background" />
+        {/* Logo Background - centered large */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <img
+            src="/logbg.png"
+            alt=""
+            className="w-[700px] h-[700px] opacity-15"
+          />
+        </div>
+        {/* Accent logo - top left */}
+        <div className="absolute top-0 left-0 pointer-events-none">
+          <img
+            src="/logbg.png"
+            alt=""
+            className="w-[200px] h-[200px] opacity-15 -translate-x-1/3 -translate-y-1/3"
+          />
+        </div>
+        {/* Black overlay for smooth flow between sections */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4">
@@ -66,13 +78,13 @@ export function PartnershipsSection() {
             <span className="text-primary font-semibold uppercase tracking-wide text-sm">Partnerships</span>
           </div>
           <h2
-            className="animate-on-scroll text-4xl md:text-6xl font-bold text-foreground"
+            className="animate-on-scroll text-4xl md:text-6xl font-bold text-white"
             style={{ fontFamily: "var(--font-bebas)", animationDelay: "0.1s" }}
           >
             Partner With <span className="text-primary">ReliableFitness</span>
           </h2>
           <p
-            className="animate-on-scroll text-lg text-muted-foreground leading-relaxed"
+            className="animate-on-scroll text-lg text-white/70 leading-relaxed"
             style={{ animationDelay: "0.2s" }}
           >
             Join us in bringing group fitness to more communities. We collaborate with gyms, brands, and event
@@ -87,7 +99,7 @@ export function PartnershipsSection() {
             return (
               <Card
                 key={type.title}
-                className="animate-on-scroll group p-8 border-2 hover:border-primary transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden"
+                className="bg-background/80 backdrop-blur-sm animate-on-scroll group p-8 border-2 hover:border-primary transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden"
                 style={{ animationDelay: `${0.3 + index * 0.1}s` }}
               >
                 {/* Animated background */}
@@ -135,6 +147,7 @@ export function PartnershipsSection() {
             </p>
             <Button
               size="lg"
+              onClick={() => window.open("https://wa.me/27628305024?text=Hi%20Nathi!%20I'm%20interested%20in%20becoming%20a%20partner%20with%20ReliableFitness.", "_blank")}
               className="bg-background hover:bg-background/90 text-foreground transition-all duration-300 hover:scale-105 group"
             >
               Become a Partner
