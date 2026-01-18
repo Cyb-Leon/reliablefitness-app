@@ -2,73 +2,39 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Users, Zap, ChevronLeft, ChevronRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
-const slides = [
-  {
-    image: "/grp1.jpg",
-    title: "Reliable Fitness. Anywhere. Everywhere.",
-    subtitle: "Structured group workouts for communities, companies, and teams",
-  },
-  {
-    image: "/bg1.jpg",
-    title: "Reliable Fitness. Anywhere. Everywhere.",
-    subtitle: "Bodyweight training that pushes your limits as a team",
-  },
-  {
-    image: "/grp2.jpg",
-    title: "Reliable Fitness. Anywhere. Everywhere.",
-    subtitle: "Outdoor fitness programs that bring people together",
-  },
-  {
-    image: "/bg2.jpg",
-    title: "Reliable Fitness. Anywhere. Everywhere.",
-    subtitle: "Cardio kickboxing classes that pack a punch",
-  },
-  {
-    image: "/grp3.jpg",
-    title: "Reliable Fitness. Anywhere. Everywhere.",
-    subtitle: "Yoga and stretching for balanced team fitness",
-  },
-  {
-    image: "/grp4.jpg",
-    title: "Reliable Fitness. Anywhere. Everywhere.",
-    subtitle: "High-intensity intervals that deliver maximum results",
-  },
+const subtitles = [
+  "Structured group workouts for communities, companies, and teams",
+  "Bodyweight training that pushes your limits as a team",
+  "Outdoor fitness programs that bring people together",
+  "Cardio kickboxing classes that pack a punch",
+  "Yoga and stretching for balanced team fitness",
+  "High-intensity intervals that deliver maximum results",
 ]
 
 export function HeroSection() {
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isPaused, setIsPaused] = useState(false)
+  const [currentSubtitle, setCurrentSubtitle] = useState(0)
   const heroRef = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
+  // Cycle through subtitles
   useEffect(() => {
-    if (isPaused) return
-
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length)
+      setCurrentSubtitle((prev) => (prev + 1) % subtitles.length)
     }, 5000)
 
     return () => clearInterval(interval)
-  }, [isPaused])
+  }, [])
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length)
-    setIsPaused(true)
-    setTimeout(() => setIsPaused(false), 10000)
-  }
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
-    setIsPaused(true)
-    setTimeout(() => setIsPaused(false), 10000)
-  }
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index)
-    setIsPaused(true)
-    setTimeout(() => setIsPaused(false), 20000)
-  }
+  // Ensure video plays on mount
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Autoplay may be blocked, that's okay
+      })
+    }
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -93,23 +59,21 @@ export function HeroSection() {
       ref={heroRef}
       className="relative min-h-screen flex items-end justify-center overflow-hidden pb-16 md:pb-24"
     >
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
-            index === currentSlide ? "opacity-100" : "opacity-0"
-          }`}
+      {/* Video Background */}
+      <div className="absolute inset-0 w-full h-full">
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
         >
-          <img
-            src={slide.image || "/placeholder.svg"}
-            alt={slide.title}
-            height={1000}
-            width={1000}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black/90" />
-        </div>
-      ))}
+          <source src="/bg.mp4" type="video/mp4" />
+        </video>
+        {/* Gradient Overlay */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/90" />
+      </div>
 
 
       <div className="container  mx-auto px-4 relative z-20">
@@ -118,17 +82,15 @@ export function HeroSection() {
           <h1
             className="tracking-wider text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-background drop-shadow-2xl"
             style={{ fontFamily: "var(--font-bebas)" }}
-            key={`title-${currentSlide}`}
           >
-            {/* {slides[currentSlide].title.split(".")[0]}.{" "} */}
-            <span className="text-red-200">{slides[currentSlide].title.split(".").slice(1).join(".")}</span>
+            <span className="text-red-200">Anywhere. Everywhere.</span>
           </h1>
 
           <p
             className="animate-fade-in-up text-2xl md:text-4xl text-background/95 max-w-3xl mx-auto leading-relaxed drop-shadow-lg transition-all duration-500"
-            key={`subtitle-${currentSlide}`}
+            key={`subtitle-${currentSubtitle}`}
           >
-            {slides[currentSlide].subtitle}
+            {subtitles[currentSubtitle]}
           </p>
        
           <div
